@@ -56,6 +56,49 @@ const ProjectDetail: React.FC = () => {
     setSelectedImage(project.gallery[prevIndex]);
   };
 
+  const renderOverview = () => {
+    const marker = "專案背景 (The Context)";
+    const index = project.overview.indexOf(marker);
+
+    if (index !== -1) {
+      const summary = project.overview.substring(0, index);
+      let context = project.overview.substring(index + marker.length);
+      // Clean up leading colon, whitespace, or newlines
+      context = context.replace(/^[:：\s]+/, '');
+
+      return (
+        <>
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+            I. 摘要
+          </h2>
+          <p className="text-center text-gray-500 mb-16 -mt-8">Project Summary</p>
+          
+          <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-line mb-16">
+            {summary.trim().replace(/^### .*?\n/, '')} {/* Clean potential duplicate header in string */}
+          </p>
+
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+            II. 背景與挑戰
+          </h2>
+          <p className="text-center text-gray-500 mb-16 -mt-8">Context & Problem Statement</p>
+          
+          <div className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">
+             <strong className="text-white text-xl block mb-4">專案背景 (The Context)</strong>
+             {context.trim()}
+          </div>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <h2 className="text-3xl font-bold text-white mb-12 text-center">I. 摘要</h2>
+        <p className="text-center text-gray-500 mb-16 -mt-8">Project Summary</p>
+        <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">{project.overview}</p>
+      </>
+    );
+  };
+
   return (
     <div className="pt-24 pb-20 min-h-screen relative">
        {/* Hero Image */}
@@ -83,14 +126,13 @@ const ProjectDetail: React.FC = () => {
        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
             {/* Overview */}
             <section className="mb-20">
-                <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-accent pl-4">Overview</h2>
-                <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">{project.overview}</p>
+                {renderOverview()}
             </section>
 
             {/* Content: Either Detailed Case Study or Standard Process */}
             {project.detailedCaseStudy ? (
               <section className="mb-20">
-                 <h2 className="text-3xl font-bold text-white mb-12 text-center">設計流程與決策依據</h2>
+                 <h2 className="text-3xl font-bold text-white mb-12 text-center">III. 設計流程與決策依據</h2>
                  <p className="text-center text-gray-500 mb-16 -mt-8">The Process and Rationale</p>
 
                  <div className="space-y-16">
@@ -129,7 +171,8 @@ const ProjectDetail: React.FC = () => {
               </section>
             ) : (
               <section className="mb-20">
-                  <h2 className="text-3xl font-bold text-white mb-10 text-center">Design Process</h2>
+                  <h2 className="text-3xl font-bold text-white mb-12 text-center">III. 設計流程與決策依據</h2>
+                  <p className="text-center text-gray-500 mb-16 -mt-8">The Process and Rationale</p>
                   
                   <div className="space-y-16">
                       {/* Standard Process View */}
@@ -189,7 +232,7 @@ const ProjectDetail: React.FC = () => {
        {project.gallery.length > 0 && (
           <section className="mb-20 w-[90%] md:w-[80%] mx-auto">
               <h2 className="text-2xl font-bold text-white mb-8 border-l-4 border-accent pl-4">Project Gallery</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {project.gallery.map((img, idx) => (
                       <div 
                         key={idx} 
@@ -214,7 +257,7 @@ const ProjectDetail: React.FC = () => {
             {/* Outcomes Section */}
             {project.outcomes && (
               <section className="mb-20 bg-gradient-to-br from-accent/10 to-transparent p-8 rounded-2xl border border-accent/20">
-                <h2 className="text-2xl font-bold text-white mb-6">成果與影響 (The Outcome)</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">IV. 成果與影響 (The Outcome)</h2>
                 <ul className="space-y-4">
                   {project.outcomes.map((outcome, idx) => (
                     <li key={idx} className="flex items-start">

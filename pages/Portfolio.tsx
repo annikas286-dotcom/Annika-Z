@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data';
@@ -9,7 +10,7 @@ const Portfolio: React.FC = () => {
   const [activeSkill, setActiveSkill] = useState<SkillTag | null>(null);
 
   // Exact filter list requested by user
-  const categories: Category[] = ['App UI/UX', '網站設計', '網頁設計', '平面設計'];
+  const categories: Category[] = ['App UI/UX', '網站設計', '網頁設計', '平面設計', 'SCADA UI/UX'];
   
   // Collect all unique skills for the secondary filter
   const allSkills: SkillTag[] = Array.from(new Set(projects.flatMap(p => p.tags)));

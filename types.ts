@@ -1,4 +1,5 @@
-export type Category = 'App UI/UX' | '網站設計' | '網頁設計' | '平面設計';
+
+export type Category = 'App UI/UX' | '網站設計' | '網頁設計' | '平面設計' | 'SCADA UI/UX';
 export type SkillTag = string;
 
 export interface CaseStudySection {

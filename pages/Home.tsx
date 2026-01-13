@@ -43,13 +43,19 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         
-        {/* Background Image with Slow Pan */}
+        {/* Background Video (Liquid Flow) */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
-            <img 
-                src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2070&auto=format&fit=crop" 
-                alt="Abstract Background" 
-                className="w-full h-full object-cover opacity-60 animate-slow-pan"
-            />
+            <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="w-full h-full object-cover opacity-60"
+            >
+                <source src="../images/web/index-bg.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
             {/* Gradient Overlay for Contrast */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#050505]"></div>
             
@@ -57,88 +63,63 @@ const Home: React.FC = () => {
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none"></div>
         </div>
 
-        <div className="w-[80%] mx-auto relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="w-[90%] md:w-[80%] mx-auto relative z-10">
+            <div className="flex flex-col items-center justify-center text-center">
                 
-                {/* Left Column: Text Content */}
-                <div className="flex flex-col items-start justify-center">
+                {/* Centered Staggered Main Headline */}
+                <div className="w-full max-w-5xl mb-12 relative">
                     
-                    {/* Staggered Main Headline */}
-                    <div className="w-full mb-10 relative">
-                        
-                        {/* Line 1: Left aligned */}
-                        <div className="flex flex-row items-baseline justify-start animate-enter delay-100">
-                            <span className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl text-gray-400 font-medium mr-2 md:mr-4 shrink-0">將</span>
-                            <h1 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-none">
-                                使用者洞察，
-                            </h1>
-                        </div>
+                    {/* Line 1: Left aligned relative to container */}
+                    <div className="flex flex-row items-baseline justify-start animate-enter delay-100">
+                        <span className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl text-gray-400 font-medium mr-2 md:mr-4 shrink-0">將</span>
+                        <h1 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-none">
+                            使用者洞察，
+                        </h1>
+                    </div>
 
-                        {/* Line 2 (Connector): Indented */}
-                        <div className="flex items-center justify-start pl-8 sm:pl-16 my-4 animate-enter delay-300">
-                            <span className="hidden sm:block h-px w-8 md:w-16 bg-gray-600 mr-4"></span>
-                            <span className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl text-gray-400 italic font-serif tracking-wide">
-                                轉化為
+                    {/* Line 2 (Connector): Indented */}
+                    <div className="flex items-center justify-start pl-8 sm:pl-24 my-6 animate-enter delay-300">
+                        <span className="hidden sm:block h-px w-12 md:w-24 bg-gray-600 mr-6"></span>
+                        <span className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl text-gray-400 italic font-serif tracking-wide">
+                            轉化為
+                        </span>
+                    </div>
+
+                    {/* Line 3 & 4 (Impact & Product): Right aligned within the container */}
+                    <div className="flex flex-col items-end animate-enter delay-500 pr-0 lg:pr-12">
+                        <div className="flex flex-row items-baseline flex-wrap justify-end">
+                            <span className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl text-white font-bold mr-2 md:mr-4 mb-2">有</span>
+                            <span className="text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-accent to-purple-400 leading-none drop-shadow-[0_0_25px_rgba(209,105,255,0.4)] transform hover:scale-105 transition-transform duration-500 cursor-default">
+                                影響力
+                            </span>
+                            <span className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl text-white font-bold ml-2 md:mr-2">的</span>
+                        </div>
+                        <div className="mt-4 relative z-10 animate-enter delay-700">
+                            <span className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter">
+                                數位產品<span className="text-accent">。</span>
                             </span>
                         </div>
-
-                        {/* Line 3 & 4 (Impact & Product): Right aligned within the column (creates a step effect) */}
-                        <div className="flex flex-col items-end animate-enter delay-500 pr-4 lg:pr-12">
-                            <div className="flex flex-row items-baseline flex-wrap justify-end">
-                                <span className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl text-white font-bold mr-2 md:mr-4 mb-2">有</span>
-                                <span className="text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-accent to-purple-400 leading-none drop-shadow-[0_0_25px_rgba(209,105,255,0.4)] transform hover:scale-105 transition-transform duration-500 cursor-default">
-                                    影響力
-                                </span>
-                                <span className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl text-white font-bold ml-2 md:ml-4">的</span>
-                            </div>
-                            <div className="mt-2 relative z-10 animate-enter delay-700">
-                                <span className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter">
-                                    數位產品<span className="text-accent">。</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <p className="max-w-xl text-gray-200 text-lg md:text-xl mb-10 leading-relaxed text-justify animate-enter delay-900 drop-shadow-md">
-                    我是 Zeng，一位以策略思維驅動的 UI/UX 設計師。我深諳從 A 到 Z 的設計流程，擅長將複雜的使用者需求梳理成直覺且高效的介面，確保設計不僅美觀，更能為您的業務帶來實質增長。
-                    </p>
-                    
-                    <div className="animate-enter delay-1100">
-                        <Link 
-                            to="/portfolio" 
-                            className="inline-block px-8 py-4 bg-accent text-black font-bold text-lg hover:bg-white transition-all duration-300 rounded-lg shadow-[0_0_20px_rgba(209,105,255,0.3)] hover:shadow-[0_0_30px_rgba(209,105,255,0.5)]"
-                        >
-                            立即探索作品
-                        </Link>
                     </div>
                 </div>
-
-                {/* Right Column: Visual Placeholder */}
-                <div className="w-full flex items-center justify-center animate-enter delay-1300">
-                    <div className="relative w-full aspect-video bg-white/5 rounded-xl border border-white/10 overflow-hidden shadow-2xl group feather-mask">
-                        <div className="absolute inset-0 flex items-center justify-center z-20">
-                            <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center backdrop-blur-md group-hover:scale-110 transition-transform cursor-pointer border border-white/20">
-                                <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
-                            </div>
-                        </div>
-                        {/* Mock UI Elements */}
-                        <div className="absolute top-4 left-4 right-4 h-6 flex space-x-2 z-20">
-                            <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                        </div>
-                        <img src="https://picsum.photos/id/201/1600/900" alt="Showcase" className="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
-                    </div>
+                
+                <p className="max-w-2xl text-gray-200 text-lg md:text-xl mb-12 leading-relaxed animate-enter delay-900 drop-shadow-md">
+                我是 Zeng，一位以策略思維驅動的 UI/UX 設計師。我深諳從 A 到 Z 的設計流程，擅長將複雜的使用者需求梳理成直覺且高效的介面，確保設計不僅美觀，更能為您的業務帶來實質增長。
+                </p>
+                
+                <div className="animate-enter delay-1100">
+                    <Link 
+                        to="/portfolio" 
+                        className="inline-block px-10 py-5 bg-accent text-black font-bold text-xl hover:bg-white transition-all duration-300 rounded-lg shadow-[0_0_20px_rgba(209,105,255,0.3)] hover:shadow-[0_0_40px_rgba(209,105,255,0.6)]"
+                    >
+                        立即探索作品
+                    </Link>
                 </div>
-
             </div>
         </div>
       </section>
 
       {/* Challenges Section - Core Values */}
       <section className="py-24 bg-card relative overflow-hidden">
-        {/* Subtle decorative blobs for this section */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -152,18 +133,14 @@ const Home: React.FC = () => {
             {/* Card 1 */}
             <div className="group relative bg-[#0f0f0f] border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)] overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-purple-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                
-                {/* Inner Glow on Hover */}
                 <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
                 <div className="relative z-10">
                     <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center mb-6 shadow-lg group-hover:border-accent/40 group-hover:scale-110 transition-all duration-500">
                         <Lightbulb className="text-gray-400 group-hover:text-accent transition-colors duration-300" size={32} />
                     </div>
-                    
                     <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-accent transition-colors duration-300">體驗優化</h3>
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 group-hover:text-gray-400">UX Optimization</p>
-                    
                     <p className="text-gray-400 leading-relaxed text-base group-hover:text-gray-300 transition-colors">
                         透過嚴謹的使用者研究，精準找出流程痛點，打造零摩擦的體驗。
                     </p>
@@ -179,10 +156,8 @@ const Home: React.FC = () => {
                     <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center mb-6 shadow-lg group-hover:border-accent/40 group-hover:scale-110 transition-all duration-500">
                         <Sparkles className="text-gray-400 group-hover:text-accent transition-colors duration-300" size={32} />
                     </div>
-                    
                     <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-accent transition-colors duration-300">視覺傳達</h3>
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 group-hover:text-gray-400">Visual Clarity</p>
-                    
                     <p className="text-gray-400 leading-relaxed text-base group-hover:text-gray-300 transition-colors">
                         運用極簡美學與清晰層次，設計出符合品牌調性且易於理解的介面。
                     </p>
@@ -198,10 +173,8 @@ const Home: React.FC = () => {
                     <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center mb-6 shadow-lg group-hover:border-accent/40 group-hover:scale-110 transition-all duration-500">
                         <TrendingUp className="text-gray-400 group-hover:text-accent transition-colors duration-300" size={32} />
                     </div>
-                    
                     <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-accent transition-colors duration-300">商業賦能</h3>
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 group-hover:text-gray-400">Business Impact</p>
-                    
                     <p className="text-gray-400 leading-relaxed text-base group-hover:text-gray-300 transition-colors">
                         將設計決策與業務目標緊密結合，確保每個像素都為最終成果服務。
                     </p>
@@ -220,7 +193,6 @@ const Home: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                {/* Connector Line (Desktop) */}
                 <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-accent/0 via-accent/30 to-accent/0 z-0"></div>
 
                 {/* Step 1 */}
@@ -298,7 +270,6 @@ const Home: React.FC = () => {
                     alt={project.title} 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
-                  {/* Hover Overlay with "View Case Study" */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                       <span className="px-6 py-3 bg-black/80 backdrop-blur text-white font-bold rounded-full border border-accent">View Case Study</span>
                   </div>
